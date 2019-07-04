@@ -1,5 +1,5 @@
 package java_training;
-public class Account {
+public abstract class Account {
 
 	/*public enum accountType{
 		/SAVINGS_ACCOUNT,
@@ -25,9 +25,7 @@ public class Account {
 		this.employee.setAccount(this);
 		//this.type=type;
 	}
-	public long getAccountId() {
-		return accountId;
-	}
+	public  abstract long getAccountId();
 	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
@@ -37,35 +35,10 @@ public class Account {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getAccountBalance() {
-		return accountBalance;
-	}
-	public void setAccountBalance(double accountBalance) {
-		this.accountBalance = accountBalance;
-	}
+	public abstract double getAccountBalance();
+	public abstract void setAccountBalance(double accountBalance) ;
 	
-	public double withdraw(double amount) {
-		if((this.accountBalance-amount)>=minAccountBalance){
-			this.accountBalance-=amount;
-			return accountBalance;
-		}else {
-			System.out.println("Insufficient Balance!!!");
-			System.out.println("Current Account Balance:"+this.accountBalance+"\nMinimum Balance:3000");
-			return this.accountBalance;
-		}
-			
-	}
-	public double deposit (double amount)
-	{
-		this.accountBalance=accountBalance+amount;
-		return this.accountBalance;
-	}
-	public void print() {
-		
-		System.out.println("AccountId = " +this.accountId);
-		System.out.print("Employee Name = "+this.employee.getName());
-		System.out.println("\nAccountBalance ="+this.accountBalance);
-	
-		
-	}
+	public abstract double withdraw(double amount);
+	public abstract double deposit (double amount);
+	public abstract void print() ;
 }
