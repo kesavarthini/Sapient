@@ -1,15 +1,15 @@
 package java_training;
+
 public class Address {
-	
+
 	private String street;
 	private String city;
 	private String state;
-	
-	
-	public Address(String street,String city,String state) {
-		this.street=street;
-		this.city=city;
-		this.state=state;
+
+	public Address(String street, String city, String state) {
+		this.street = street;
+		this.city = city;
+		this.state = state;
 	}
 
 	public String getStreet() {
@@ -35,10 +35,9 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-	 
-	public void Address()
-	{
+
+	public void Address() {
 		System.out.println("Address: ");
-	     System.out.print(this.street+","+this.city+","+this.state);
-    }
+		System.out.print(this.street + "," + this.city + "," + this.state);
+	}
 }

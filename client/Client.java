@@ -5,16 +5,25 @@ import java_training.Savings;
 import java_training.Account;
 import java_training.Salary;
 import java_training.Current;
-
+import java_training.Comparators;
+import java_training.Comparators.AccountAsc;
+import java_training.Comp;
 import java.sql.Savepoint;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.AccountException;
 import javax.swing.text.View;
 import javax.xml.transform.Source;
+
+import org.omg.CORBA.TRANSACTION_REQUIRED;
 
 import java_training.Address;
 
@@ -57,7 +66,7 @@ public class Client {
 	public static void main(String args[]) {
 		Scanner in = new Scanner(System.in);
 
-		List<Account> values = new ArrayList<>();
+		Set<Account> values = new TreeSet<>();
 		boolean cnt = true;
 		while (cnt) {
 			System.out.println("1.Create 2.Account Action");
@@ -118,17 +127,22 @@ public class Client {
 				// accountType accchoice=java_training.Account.accountType.values()[type];
 
 			} else {
+				List<Account> list = new ArrayList<Account>(values);
+				System.out.println("1.Ascending 2.Descending");
+				Scanner scanner = new Scanner(System.in);
+				int choice4 = scanner.nextInt();
+				Collections.sort(list, Comp.getComparator(choice4));
+                System.out.println(list);
 				System.out.println("Enter account Id: ");
-				int found=0;
+				int found = 0;
 				long accntid = in.nextLong();
 				for (Account acc : values) {
 					if (acc.getAccountId() == accntid) {
 						operate(acc);
-						found=1;
-					} 
+						found = 1;
 					}
-				if(found==0)
-				{
+				}
+				if (found == 0) {
 					System.out.println("Account Doesnt Exist!!");
 
 				}
